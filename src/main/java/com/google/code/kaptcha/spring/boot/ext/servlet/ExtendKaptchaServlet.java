@@ -48,10 +48,10 @@ public class ExtendKaptchaServlet extends HttpServlet implements Servlet {
 
 	private Producer kaptchaProducer = null;
 
-	private CaptchaResolver kaptchaResolver;
+	private CaptchaResolver captchaResolver;
 	
-	public ExtendKaptchaServlet(CaptchaResolver kaptchaResolver) {
-		this.kaptchaResolver = kaptchaResolver;
+	public ExtendKaptchaServlet(CaptchaResolver captchaResolver) {
+		this.captchaResolver = captchaResolver;
 	}
 	
 	/*
@@ -75,7 +75,7 @@ public class ExtendKaptchaServlet extends HttpServlet implements Servlet {
 
 		ExtConfig config = new ExtConfig(this.props);
 		this.kaptchaProducer = config.getProducerImpl();
-		this.kaptchaResolver.init(config);
+		this.captchaResolver.init(config);
 	}
 
 	/** */
@@ -97,7 +97,7 @@ public class ExtendKaptchaServlet extends HttpServlet implements Servlet {
 		// create the text for the image
 		String capText = this.kaptchaProducer.createText();
 		
-		this.kaptchaResolver.setCaptcha(req, resp, capText, new Date());
+		this.captchaResolver.setCaptcha(req, resp, capText, new Date());
 
 		// create the image with the text
 		BufferedImage bi = this.kaptchaProducer.createImage(capText);
