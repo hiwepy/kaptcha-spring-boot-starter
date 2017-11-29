@@ -35,11 +35,12 @@ import com.google.code.kaptcha.spring.boot.ext.CaptchaResolver;
 import com.google.code.kaptcha.spring.boot.ext.util.ExtConfig;
 
 /**
- * This servlet uses the settings passed into it via the Producer api.
- *
- * @author testvoogd@hotmail.com
- * @author jon
- * @author cliffano
+ * 
+ * @className	： ExtendKaptchaServlet
+ * @description	： This servlet uses the settings passed into it via the Producer api.
+ * @author 		： <a href="https://github.com/vindell">vindell</a>
+ * @date		： 2017年11月17日 上午8:38:57
+ * @version 	V1.0
  */
 @SuppressWarnings("serial")
 public class ExtendKaptchaServlet extends HttpServlet implements Servlet {
