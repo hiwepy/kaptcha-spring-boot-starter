@@ -19,6 +19,6 @@
 </dependency>
 ```
 
-### Simple ：  CaptchaResolver Extends
+### Sample ：  CaptchaResolver Extends
 
-[https://github.com/vindell/spring-boot-starter-samples/tree/master/spring-boot-simple-kaptcha](https://github.com/vindell/spring-boot-starter-samples/tree/master/spring-boot-simple-kaptcha "spring-boot-simple-kaptcha")
+[https://github.com/vindell/spring-boot-starter-samples/tree/master/spring-boot-sample-kaptcha](https://github.com/vindell/spring-boot-starter-samples/tree/master/spring-boot-sample-kaptcha "spring-boot-sample-kaptcha")
