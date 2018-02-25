@@ -45,8 +45,8 @@ public class KaptchaAutoConfiguration {
 		registrationBean.addInitParameter(Constants.KAPTCHA_TEXTPRODUCER_CHAR_SPACE, "5");
 		registrationBean.addInitParameter(Constants.KAPTCHA_TEXTPRODUCER_CHAR_LENGTH, "4");
 
-		if (CollectionUtils.isEmpty(properties.getParameters())) {
-			registrationBean.getInitParameters().putAll(properties.getParameters());
+		if (!CollectionUtils.isEmpty(properties.getParameters())) {
+			registrationBean.setInitParameters(properties.getParameters());
 		}
 
 		registrationBean.addUrlMappings(properties.getPattern());
