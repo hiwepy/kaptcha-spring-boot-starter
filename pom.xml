@@ -28,9 +28,9 @@
 	</licenses>
 
 	<scm>
-		<url>https://github.com/vindell/spring-boot-starter-kaptcha</url>
-		<connection>scm:git:git://github.com/vindell/spring-boot-starter-kaptcha.git</connection>
-		<developerConnection>scm:git:git@github.com/vindell/spring-boot-starter-kaptcha.git</developerConnection>
+		<url>https://github.com/vindell/${project.artifactId}</url>
+		<connection>scm:git:git://github.com/vindell/${project.artifactId}.git</connection>
+		<developerConnection>scm:git:git@github.com/vindell/${project.artifactId}.git</developerConnection>
 	</scm>
 
 	<properties>
