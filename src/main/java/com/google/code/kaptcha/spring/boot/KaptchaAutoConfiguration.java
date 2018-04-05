@@ -30,9 +30,9 @@ public class KaptchaAutoConfiguration {
 	// 验证码
 	@Bean
 	@ConditionalOnMissingBean(name = "kaptchaServlet")
-	public ServletRegistrationBean servletRegistrationBean(KaptchaProperties properties,CaptchaResolver kaptchaResolver) throws ServletException {
+	public ServletRegistrationBean<ExtendKaptchaServlet> servletRegistrationBean(KaptchaProperties properties,CaptchaResolver kaptchaResolver) throws ServletException {
 
-		ServletRegistrationBean registrationBean = new ServletRegistrationBean();
+		ServletRegistrationBean<ExtendKaptchaServlet> registrationBean = new ServletRegistrationBean<ExtendKaptchaServlet>();
 
 		ExtendKaptchaServlet kaptchaServlet = new ExtendKaptchaServlet(kaptchaResolver);
 
