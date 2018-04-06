@@ -1,0 +1,19 @@
+kaptcha:
+  pattern: /kaptcha
+  parameters:
+     kaptcha.border : yes
+     kaptcha.border.color : 105,179,90
+     kaptcha.textproducer.font.color : blue
+     kaptcha.image.width : 100
+     kaptcha.image.height : 50
+     kaptcha.textproducer.font.size : 27
+     kaptcha.session.key : code
+     kaptcha.textproducer.char.length : 4
+     kaptcha.textproducer.font.names : 宋体,楷体,微软雅黑
+     kaptcha.textproducer.char.string : 0123456789ABCEFGHIJKLMNOPQRSTUVWXYZ
+     kaptcha.obscurificator.impl : com.google.code.kaptcha.impl.WaterRipple
+     kaptcha.noise.color : black
+     kaptcha.noise.impl : com.google.code.kaptcha.impl.DefaultNoise
+     kaptcha.background.clear.from : 185,56,213
+     kaptcha.background.clear.to : white
+     kaptcha.textproducer.char.space : 3

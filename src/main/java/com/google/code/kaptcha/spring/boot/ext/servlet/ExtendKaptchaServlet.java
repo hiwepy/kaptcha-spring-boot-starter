@@ -31,16 +31,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.code.kaptcha.Producer;
-import com.google.code.kaptcha.spring.boot.ext.CaptchaResolver;
-import com.google.code.kaptcha.spring.boot.ext.util.ExtConfig;
+import com.google.code.kaptcha.spring.boot.ext.KaptchaResolver;
+import com.google.code.kaptcha.util.Config;
 
 /**
- * 
- * @className	： ExtendKaptchaServlet
- * @description	： This servlet uses the settings passed into it via the Producer api.
- * @author 		： <a href="https://github.com/vindell">vindell</a>
- * @date		： 2017年11月17日 上午8:38:57
- * @version 	V1.0
+ * This servlet uses the settings passed into it via the Producer api.
+ * @author <a href="https://github.com/vindell">vindell</a>
+ * @see {@link com.google.code.kaptcha.servlet.KaptchaServlet}
  */
 @SuppressWarnings("serial")
 public class ExtendKaptchaServlet extends HttpServlet implements Servlet {
@@ -49,9 +46,9 @@ public class ExtendKaptchaServlet extends HttpServlet implements Servlet {
 
 	private Producer kaptchaProducer = null;
 
-	private CaptchaResolver captchaResolver;
+	private KaptchaResolver captchaResolver;
 	
-	public ExtendKaptchaServlet(CaptchaResolver captchaResolver) {
+	public ExtendKaptchaServlet(KaptchaResolver captchaResolver) {
 		this.captchaResolver = captchaResolver;
 	}
 	
@@ -74,7 +71,7 @@ public class ExtendKaptchaServlet extends HttpServlet implements Servlet {
 			this.props.put(key, value);
 		}
 
-		ExtConfig config = new ExtConfig(this.props);
+		Config config = new Config(this.props);
 		this.kaptchaProducer = config.getProducerImpl();
 		this.captchaResolver.init(config);
 	}

@@ -12,8 +12,8 @@ import org.springframework.util.CollectionUtils;
 
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.servlet.KaptchaServlet;
-import com.google.code.kaptcha.spring.boot.ext.CaptchaResolver;
-import com.google.code.kaptcha.spring.boot.ext.SessionCaptchaResolver;
+import com.google.code.kaptcha.spring.boot.ext.KaptchaResolver;
+import com.google.code.kaptcha.spring.boot.ext.SessionKaptchaResolver;
 import com.google.code.kaptcha.spring.boot.ext.servlet.ExtendKaptchaServlet;
 
 @Configuration
@@ -22,18 +22,23 @@ import com.google.code.kaptcha.spring.boot.ext.servlet.ExtendKaptchaServlet;
 public class KaptchaAutoConfiguration {
 
 	@Bean
-	@ConditionalOnMissingBean(CaptchaResolver.class)
-	public CaptchaResolver kaptchaResolver() {
-		return new SessionCaptchaResolver(); 
+	@ConditionalOnMissingBean(KaptchaResolver.class)
+	public KaptchaResolver kaptchaResolver(KaptchaProperties properties) {
+		
+		KaptchaResolver kaptchaResolver = new SessionKaptchaResolver(); 
+		// 初始化参数
+		kaptchaResolver.init(properties.getCaptchaStoreKey(), properties.getCaptchaDateStoreKey(), properties.getCaptchaTimeout());
+		
+		return kaptchaResolver;
 	}
 	
 	// 验证码
 	@Bean
 	@ConditionalOnMissingBean(name = "kaptchaServlet")
-	public ServletRegistrationBean<ExtendKaptchaServlet> servletRegistrationBean(KaptchaProperties properties,CaptchaResolver kaptchaResolver) throws ServletException {
+	public ServletRegistrationBean<ExtendKaptchaServlet> servletRegistrationBean(KaptchaProperties properties,KaptchaResolver kaptchaResolver) throws ServletException {
 
 		ServletRegistrationBean<ExtendKaptchaServlet> registrationBean = new ServletRegistrationBean<ExtendKaptchaServlet>();
-
+		
 		ExtendKaptchaServlet kaptchaServlet = new ExtendKaptchaServlet(kaptchaResolver);
 
 		registrationBean.setServlet(kaptchaServlet);

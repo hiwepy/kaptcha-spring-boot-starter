@@ -13,10 +13,23 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.code.kaptcha.spring.boot.ext;
+/**
+ * 
+ */
+package com.google.code.kaptcha.spring.boot.ext.exception;
 
-public class Constants {
+/**
+ * 验证码错误异常
+ * @author <a href="https://github.com/vindell">vindell</a>
+ */
+public class KaptchaIncorrectException extends Exception {
 	
-	public final static String KAPTCHA_SESSION_TIMEOUT_KEY = "kaptcha.session.timeout";
+	public KaptchaIncorrectException() {
+        super("captcha incorrect");
+    }
+
+    public KaptchaIncorrectException(String message) {
+        super(message);
+    }
 	
 }
