@@ -62,9 +62,15 @@ public class SessionKaptchaResolver implements KaptchaResolver {
 	
 	@Override
 	public void init(String captchaStoreKey, String captchaDateStoreKey, long captchaTimeout) {
-		this.captchaStoreKey = captchaStoreKey;
-		this.captchaDateStoreKey = captchaDateStoreKey;
-		this.captchaTimeout = captchaTimeout;
+		if(StringUtils.isNoneEmpty(captchaStoreKey)) {
+			this.captchaStoreKey = captchaStoreKey;
+		}
+		if(StringUtils.isNoneEmpty(captchaDateStoreKey)) {
+			this.captchaDateStoreKey = captchaDateStoreKey;
+		}
+		if(captchaTimeout > 0) {
+			this.captchaTimeout = captchaTimeout;
+		}
 	}
 	
 	@Override
