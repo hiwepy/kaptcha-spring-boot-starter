@@ -22,13 +22,14 @@ package com.google.code.kaptcha.spring.boot.ext.exception;
  * 验证码错误异常
  * @author <a href="https://github.com/vindell">vindell</a>
  */
-public class KaptchaIncorrectException extends Exception {
+@SuppressWarnings("serial")
+public class CaptchaIncorrectException extends Exception {
 	
-	public KaptchaIncorrectException() {
+	public CaptchaIncorrectException() {
         super("captcha incorrect");
     }
 
-    public KaptchaIncorrectException(String message) {
+    public CaptchaIncorrectException(String message) {
         super(message);
     }
 	

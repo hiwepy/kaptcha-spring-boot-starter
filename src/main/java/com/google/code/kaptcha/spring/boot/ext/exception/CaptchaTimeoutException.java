@@ -19,13 +19,14 @@ package com.google.code.kaptcha.spring.boot.ext.exception;
  * 验证码已经过期异常
  * @author <a href="https://github.com/vindell">vindell</a>
  */
-public class KaptchaTimeoutException extends Exception {
+@SuppressWarnings("serial")
+public class CaptchaTimeoutException extends Exception {
 
-	public KaptchaTimeoutException() {
+	public CaptchaTimeoutException() {
         super("captcha expired");
     }
 
-    public KaptchaTimeoutException(String message) {
+    public CaptchaTimeoutException(String message) {
         super(message);
     }
     

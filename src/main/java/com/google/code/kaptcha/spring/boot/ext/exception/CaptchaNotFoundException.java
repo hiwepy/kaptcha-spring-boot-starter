@@ -22,13 +22,14 @@ package com.google.code.kaptcha.spring.boot.ext.exception;
  * 验证码未找到异常
  * @author <a href="https://github.com/vindell">vindell</a>
  */
-public class KaptchaNotFoundException extends Exception {
+@SuppressWarnings("serial")
+public class CaptchaNotFoundException extends Exception {
 	
-	public KaptchaNotFoundException() {
+	public CaptchaNotFoundException() {
 		super("no comparable captcha found");
     }
 
-    public KaptchaNotFoundException(String message) {
+    public CaptchaNotFoundException(String message) {
         super(message);
     }
 	

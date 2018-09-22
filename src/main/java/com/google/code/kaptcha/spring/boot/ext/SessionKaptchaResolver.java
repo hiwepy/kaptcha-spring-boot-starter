@@ -24,8 +24,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.util.WebUtils;
 
 import com.google.code.kaptcha.spring.boot.KaptchaProperties;
-import com.google.code.kaptcha.spring.boot.ext.exception.KaptchaIncorrectException;
-import com.google.code.kaptcha.spring.boot.ext.exception.KaptchaTimeoutException;
+import com.google.code.kaptcha.spring.boot.ext.exception.CaptchaIncorrectException;
+import com.google.code.kaptcha.spring.boot.ext.exception.CaptchaTimeoutException;
 import com.google.code.kaptcha.util.Config;
 
 public class SessionKaptchaResolver implements KaptchaResolver {
@@ -75,21 +75,21 @@ public class SessionKaptchaResolver implements KaptchaResolver {
 	
 	@Override
 	public boolean validCaptcha(HttpServletRequest request, String capText)
-			throws KaptchaIncorrectException, KaptchaTimeoutException {
+			throws CaptchaIncorrectException, CaptchaTimeoutException {
 		
 		// 验证码无效
 		if(StringUtils.isEmpty(capText)) {
-			throw new KaptchaIncorrectException();
+			throw new CaptchaIncorrectException();
 		}
 		// 历史验证码无效
 		String sessionCapText = (String) WebUtils.getSessionAttribute(request, getCaptchaStoreKey());
 		if(StringUtils.isEmpty(sessionCapText)) {
-			throw new KaptchaIncorrectException();
+			throw new CaptchaIncorrectException();
 		}
 		// 检查验证码是否过期
 		Date sessionCapDate = (Date) WebUtils.getSessionAttribute(request, getCaptchaDateStoreKey());
 		if(new Date().getTime() - sessionCapDate.getTime()  > getCaptchaTimeout()) {
-			throw new KaptchaTimeoutException();
+			throw new CaptchaTimeoutException();
 		}
 		
 		return StringUtils.equalsIgnoreCase(sessionCapText, capText);

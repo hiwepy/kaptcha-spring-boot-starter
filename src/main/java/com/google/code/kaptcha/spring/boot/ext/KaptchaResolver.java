@@ -20,8 +20,8 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.code.kaptcha.spring.boot.ext.exception.KaptchaIncorrectException;
-import com.google.code.kaptcha.spring.boot.ext.exception.KaptchaTimeoutException;
+import com.google.code.kaptcha.spring.boot.ext.exception.CaptchaIncorrectException;
+import com.google.code.kaptcha.spring.boot.ext.exception.CaptchaTimeoutException;
 import com.google.code.kaptcha.util.Config;
 
 public interface KaptchaResolver {
@@ -35,7 +35,7 @@ public interface KaptchaResolver {
 	 * @param request request to be used for resolution
 	 * @return the result
 	 */
-	boolean validCaptcha(HttpServletRequest request, String capText) throws KaptchaIncorrectException, KaptchaTimeoutException;
+	boolean validCaptcha(HttpServletRequest request, String capText) throws CaptchaIncorrectException, CaptchaTimeoutException;
 
 	/**
 	 * Set the current captcha to the given one.
