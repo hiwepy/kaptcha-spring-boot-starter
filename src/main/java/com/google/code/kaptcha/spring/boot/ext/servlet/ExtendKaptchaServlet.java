@@ -37,7 +37,7 @@ import com.google.code.kaptcha.util.Config;
 /**
  * This servlet uses the settings passed into it via the Producer api.
  * @author <a href="https://github.com/vindell">vindell</a>
- * @see {@link com.google.code.kaptcha.servlet.KaptchaServlet}
+ * {@link com.google.code.kaptcha.servlet.KaptchaServlet}
  */
 @SuppressWarnings("serial")
 public class ExtendKaptchaServlet extends HttpServlet implements Servlet {

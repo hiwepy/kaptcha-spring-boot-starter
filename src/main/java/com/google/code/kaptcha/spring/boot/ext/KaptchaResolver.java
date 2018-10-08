@@ -33,6 +33,7 @@ public interface KaptchaResolver {
 	/**
 	 * Valid the current captcha via the given request.
 	 * @param request request to be used for resolution
+	 * @param capText the old captcha value
 	 * @return the result
 	 */
 	boolean validCaptcha(HttpServletRequest request, String capText) throws CaptchaIncorrectException, CaptchaTimeoutException;
@@ -42,7 +43,6 @@ public interface KaptchaResolver {
 	 * @param request request to be used for captcha modification
 	 * @param response response to be used for captcha modification
 	 * @param capText the new captcha value
-	 * @throws UnsupportedOperationException if the CaptchaResolver implementation does not support dynamic changing of the captcha
 	 */
 	void setCaptcha(HttpServletRequest request, HttpServletResponse response, String capText, Date capDate);
 	
