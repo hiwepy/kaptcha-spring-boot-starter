@@ -34,7 +34,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * anonymous implementation that invokes the {@code default} init methods to
  * ensure they are covered.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 @DisplayName("KaptchaResolver Tests")
