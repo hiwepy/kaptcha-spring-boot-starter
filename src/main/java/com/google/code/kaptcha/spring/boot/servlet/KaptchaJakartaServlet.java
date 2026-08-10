@@ -35,7 +35,7 @@ import java.util.Properties;
 
 /**
  * This servlet uses the settings passed into it via the Producer api.
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * {@link com.google.code.kaptcha.servlet.KaptchaServlet}
  */
 @SuppressWarnings("serial")
