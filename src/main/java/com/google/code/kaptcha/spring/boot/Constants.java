@@ -15,6 +15,12 @@
  */
 package com.google.code.kaptcha.spring.boot;
 
+/**
+ * <p>Constants.</p>
+ *
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Constants {
 	
 	public final static String KAPTCHA_SESSION_TIMEOUT_KEY = "kaptcha.session.timeout";

@@ -13,14 +13,12 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-/**
- * 
- */
 package com.google.code.kaptcha.spring.boot.exception;
 
 /**
- * 验证码未找到异常
+ * Captcha未找到异常
  * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
  */
 @SuppressWarnings("serial")
 public class CaptchaNotFoundException extends Exception {

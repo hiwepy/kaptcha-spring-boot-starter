@@ -16,8 +16,9 @@
 package com.google.code.kaptcha.spring.boot.exception;
 
 /**
- * 验证码已经过期异常
+ * Captcha已经过期异常
  * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
  */
 @SuppressWarnings("serial")
 public class CaptchaTimeoutException extends Exception {

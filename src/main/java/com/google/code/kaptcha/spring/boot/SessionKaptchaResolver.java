@@ -27,6 +27,12 @@ import org.springframework.web.util.WebUtils;
 
 import com.google.code.kaptcha.util.Config;
 
+/**
+ * <p>Resolver for session kaptcha resolver resolution.</p>
+ *
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class SessionKaptchaResolver implements KaptchaResolver {
 
 	/**
@@ -37,17 +43,21 @@ public class SessionKaptchaResolver implements KaptchaResolver {
 	public static final String CAPTCHA_DATE_SESSION_ATTRIBUTE_NAME = SessionKaptchaResolver.class.getName() + ".KAPTCHA_DATE";
 	
 	/**
-     * 验证码在Session中存储值的key
+     * Captcha在Session中存储值的key
      */
 	private String captchaStoreKey = CAPTCHA_SESSION_ATTRIBUTE_NAME;
 	/**
-     * 验证码创建时间在Session中存储值的key
+     * Captcha创建时间在Session中存储值的key
      */
 	private String captchaDateStoreKey = CAPTCHA_SESSION_ATTRIBUTE_NAME;
 	/**
-     * 验证码有效期；单位（毫秒），默认 60000
+     * Captcha有效期；单位（毫秒），默认 60000
      */
 	private long captchaTimeout = KaptchaProperties.DEFAULT_CAPTCHA_TIMEOUT;
+	/**
+	 * <p>Init.</p>
+	 * @param config the config
+	 */
 	
 	@Override
 	public void init(Config config ) {
@@ -58,6 +68,12 @@ public class SessionKaptchaResolver implements KaptchaResolver {
 			this.captchaDateStoreKey = config.getSessionDate();
 		}
 	}
+	/**
+	 * <p>Init.</p>
+	 * @param captchaStoreKey the captcha store key
+	 * @param captchaDateStoreKey the captcha date store key
+	 * @param captchaTimeout the captcha timeout
+	 */
 	
 	@Override
 	public void init(String captchaStoreKey, String captchaDateStoreKey, long captchaTimeout) {
@@ -71,21 +87,27 @@ public class SessionKaptchaResolver implements KaptchaResolver {
 			this.captchaTimeout = captchaTimeout;
 		}
 	}
+	/**
+	 * <p>Valid captcha.</p>
+	 * @param request the request
+	 * @param capText the cap text
+	 * @return the boolean
+	 */
 	
 	@Override
 	public boolean validCaptcha(HttpServletRequest request, String capText)
 			throws CaptchaIncorrectException, CaptchaTimeoutException {
 		
-		// 验证码无效
+		// Captcha无效
 		if(StringUtils.isEmpty(capText)) {
 			throw new CaptchaIncorrectException();
 		}
-		// 历史验证码无效
+		// 历史Captcha无效
 		String sessionCapText = (String) WebUtils.getSessionAttribute(request, getCaptchaStoreKey());
 		if(StringUtils.isEmpty(sessionCapText)) {
 			throw new CaptchaIncorrectException();
 		}
-		// 检查验证码是否过期
+		// 检查Captcha是否过期
 		Date sessionCapDate = (Date) WebUtils.getSessionAttribute(request, getCaptchaDateStoreKey());
 		if(new Date().getTime() - sessionCapDate.getTime()  > getCaptchaTimeout()) {
 			throw new CaptchaTimeoutException();
@@ -93,6 +115,7 @@ public class SessionKaptchaResolver implements KaptchaResolver {
 		
 		return StringUtils.equalsIgnoreCase(sessionCapText, capText);
 	}
+	/** Sets the captcha. */
 
 	@Override
 	public void setCaptcha(HttpServletRequest request, HttpServletResponse response, String capText, Date capDate) {
@@ -106,14 +129,17 @@ public class SessionKaptchaResolver implements KaptchaResolver {
 		WebUtils.setSessionAttribute(request, getCaptchaDateStoreKey(), (capDate != null ? capDate : new Date()) );
 
 	}
+	/** Gets the captcha store key. */
 
 	public String getCaptchaStoreKey() {
 		return captchaStoreKey;
 	}
+	/** Gets the captcha date store key. */
 	
 	public String getCaptchaDateStoreKey() {
 		return captchaDateStoreKey;
 	}
+	/** Gets the captcha timeout. */
 	
 	public long getCaptchaTimeout() {
 		return captchaTimeout;

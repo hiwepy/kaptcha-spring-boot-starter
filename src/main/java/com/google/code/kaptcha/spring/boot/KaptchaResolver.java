@@ -23,6 +23,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.util.Date;
 
+/**
+ * <p>Resolver for kaptcha resolver resolution.</p>
+ *
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public interface KaptchaResolver {
 
 	default void init(Config config){
